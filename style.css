@@ -1,0 +1,152 @@
+/* Reset */
+body {
+  margin: 0;
+  font-family: 'Georgia', serif;
+  background-color: #000;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  padding: 20px;
+  background-color: #000;
+  border-bottom: 1px solid #ffffff33;
+  height: 40vh; /* 調整為約 40% 螢幕高度 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.header .subtitle {
+  font-size: 1.2rem;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+  color: #aaa;
+}
+
+.header .time-place {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.header a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.header a:hover {
+  text-decoration: underline;
+}
+
+/* Main Layout */
+.container {
+  display: flex;
+  height: 60vh; /* 調整為約 60% 螢幕高度 */
+  width: 100vw;
+}
+
+/* 圖片區在左邊 */
+.viewer {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  touch-action: pan-y; /* 增強觸控響應 */
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+.seat-image {
+  max-width: 70%; /* 縮小圖片寬度 */
+  max-height: 60%; /* 縮小圖片高度 */
+  position: absolute;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  pointer-events: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.seat-image.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* 桌名區在右邊 */
+.sidebar {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 30px;
+}
+
+.menu-item {
+  font-size: 1.8rem;
+  margin: 20px 0;
+  color: #888;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.menu-item.active {
+  font-weight: bold;
+  color: #fff;
+}
+
+@media (min-width: 390px) and (max-width: 430px) { /* iPhone 12 系列 */
+  .header h1 {
+    font-size: 1.8rem;
+  }
+  .header .subtitle {
+    font-size: 1rem;
+  }
+  .header .time-place {
+    font-size: 0.9rem;
+  }
+  .header {
+    height: 150px; /* 手機模式固定高度 */
+  }
+  .container {
+    flex-direction: column;
+    height: calc(100vh - 150px); /* 調整為剩餘高度 */
+  }
+  .viewer {
+    width: 100%;
+    height: 100%;
+    touch-action: pan-y; /* 手機模式增強觸控 */
+  }
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 20px 0;
+  }
+  .menu-item {
+    font-size: 1.4rem;
+    margin: 0 10px;
+  }
+}
